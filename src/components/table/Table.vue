@@ -87,6 +87,7 @@
 
 <script lang="ts" setup>
 import { defineProps, PropType, onMounted, computed } from 'vue';
+// @ts-ignore
 import { ColumnProp, ColumnTable } from './types';
 
 const props = defineProps({
@@ -158,19 +159,6 @@ const props = defineProps({
     type: [String, Number] as PropType<number | string>,
     default: 'inherit',
   },
-});
-
-const colWidth = computed(() => {
-  const allWidth = 1500;
-  /**
-   * var a = 160;
-      var b = 3;
-      var quotient = Math.ceil(a / b);
-      var q = (quotient * b) - a;
-      var r = Array.from({ length: b }).map((_, i) => i === b - 1 ? quotient - q : quotient)
-   */
-  const col = props.columns.map(column => typeof column.width === 'number' ? `${column.width}px` : column.width ?? '100px');
-
 });
 
 const columnsHeader = computed(() => {
